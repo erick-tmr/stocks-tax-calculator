@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/erick-tmr/stocks-tax-calculator/internal/stocks"
 )
@@ -26,7 +27,9 @@ func main() {
 
 		var response []byte
 		response, _ = json.Marshal(calculator.Taxes)
+		str_response := string(response)
+		str_response = strings.ReplaceAll(str_response, ":", ": ")
 
-		fmt.Println(string(response))
+		fmt.Println(str_response)
 	}
 }
